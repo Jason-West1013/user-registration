@@ -1,13 +1,9 @@
 #include "../include/mongodb_handler.h"
 
-constexpr char MongoDbUri[] = "mongodb://0.0.0.0:27017";
-constexpr char DatabaseName[] = "learning_mongocxx";
-constexpr char CollectionName[] = "UserLogin";
-
 MongoDBHandler::MongoDBHandler()
     : uri(mongocxx::uri(MongoDbUri)), client(mongocxx::client(uri)), db(client[DatabaseName]) {}
 
-bool MongoDBHandler::AddUser(const std::string &username, const std::string &password)
+bool MongoDBHandler::add_user(const std::string &username, const std::string &password)
 {
     mongocxx::collection collection = db[CollectionName];
     auto builder = bsoncxx::builder::stream::document{};
@@ -21,7 +17,7 @@ bool MongoDBHandler::AddUser(const std::string &username, const std::string &pas
     return true;
 }
 
-std::string MongoDBHandler::GetPassword(const std::string &username)
+std::string MongoDBHandler::get_password(const std::string &username)
 {
     mongocxx::collection collection = db[CollectionName];
     auto builder = bsoncxx::builder::stream::document{};
@@ -40,7 +36,7 @@ std::string MongoDBHandler::GetPassword(const std::string &username)
     return "";
 }
 
-bool MongoDBHandler::UpdatePassword(const std::string &username, const std::string &password)
+bool MongoDBHandler::update_password(const std::string &username, const std::string &password)
 {
     mongocxx::collection collection = db[CollectionName];
     auto builder = bsoncxx::builder::stream::document{};
@@ -65,7 +61,7 @@ bool MongoDBHandler::UpdatePassword(const std::string &username, const std::stri
     return false;
 }
 
-bool MongoDBHandler::RemoveUser(const std::string &username)
+bool MongoDBHandler::remove_user(const std::string &username)
 {
     mongocxx::collection collection = db[CollectionName];
     auto builder = bsoncxx::builder::stream::document{};

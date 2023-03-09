@@ -9,6 +9,10 @@
 #include<mongocxx/database.hpp>
 #include<mongocxx/uri.hpp>
 
+constexpr char MongoDbUri[] = "mongodb://0.0.0.0:27017";
+constexpr char DatabaseName[] = "learning_mongocxx";
+constexpr char CollectionName[] = "UserLogin";
+
 class MongoDBHandler
 {
 private:
@@ -18,8 +22,8 @@ private:
 
 public:
     MongoDBHandler();
-    bool AddUser(const std::string &username, const std::string &password);
-    std::string GetPassword(const std::string &username);
-    bool UpdatePassword(const std::string &username, const std::string &password);
-    bool RemoveUser(const std::string &username);
+    bool add_user(const std::string &username, const std::string &password);
+    std::string get_password(const std::string &username);
+    bool update_password(const std::string &username, const std::string &password);
+    bool remove_user(const std::string &username);
 };
