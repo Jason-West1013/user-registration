@@ -9,6 +9,10 @@
 #include<mongocxx/database.hpp>
 #include<mongocxx/uri.hpp>
 
+constexpr char MongoDbUri[] = "mongodb://0.0.0.0:27017";
+constexpr char DatabaseName[] = "learning_mongocxx";
+constexpr char CollectionName[] = "UserLogin";
+
 class MongoDBHandler
 {
 private:

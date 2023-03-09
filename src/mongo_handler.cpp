@@ -1,9 +1,5 @@
 #include "../include/mongodb_handler.h"
 
-constexpr char MongoDbUri[] = "mongodb://0.0.0.0:27017";
-constexpr char DatabaseName[] = "learning_mongocxx";
-constexpr char CollectionName[] = "UserLogin";
-
 MongoDBHandler::MongoDBHandler()
     : uri(mongocxx::uri(MongoDbUri)), client(mongocxx::client(uri)), db(client[DatabaseName]) {}
 
